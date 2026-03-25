@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Admin Panel</title>
+<script>
+
+if(localStorage.getItem("admin") !== "true")
+{
+alert("You are not authorized to access Admin Panel");
+
+window.location="index.html";
+}
+
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>Quick Byte Admin Panel</header>
+<div style="text-align:right;padding:10px;">
+<button onclick="logoutAdmin()">Logout</button>
+</div>
+
+<!-- FOOD MANAGEMENT -->
+<h2 style="text-align:center;">Food Management</h2>
+
+<div class="food-inputs">
+
+<input type="text" id="foodname" placeholder="Food Name">
+
+<input type="number" id="foodprice" placeholder="Price">
+
+<button onclick="addFood()">Add Food</button>
+
+</div>
+
+<div id="foodList"></div>
+
+
+<!-- DEADLINE -->
+<h2 style="text-align:center;">Set Lunch Order Deadline</h2>
+
+<div style="text-align:center;">
+
+<input type="time" id="deadline">
+
+<button onclick="setDeadline()">Set Deadline</button>
+
+</div>
+
+<h3 style="text-align:center;" id="showDeadline"></h3>
+
+
+<!-- ORDERS -->
+<h2 style="text-align:center;">Orders Received</h2>
+
+<div id="ordersList"></div>
+
+<h3 style="text-align:center;" id="totalOrders"></h3>
+
+
+<script>
+
+let foods = JSON.parse(localStorage.getItem("foods")) || [];
+
+let foodContainer = document.getElementById("foodList");
+
+/* SHOW FOODS */
+function showFoods(){
+
+foodContainer.innerHTML="";
+
+foods.forEach(function(food,index){
+
+let div=document.createElement("div");
+
+div.className="cart-card";
+
+div.innerHTML = `
+<div class="food-row">
+  <span><b>${food.name}</b> - ₹${food.price}</span>
+  <button onclick="deleteFood(${index})" class="delete-btn">Delete</button>
+</div>
+`;
+
+
+foodContainer.appendChild(div);
+
+});
+
+}
+
+
+/* ADD FOOD */
+async function addFood(){
+
+let name=document.getElementById("foodname").value;
+let price=document.getElementById("foodprice").value;
+
+await fetch("http://localhost:5000/addFood", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ name, price })
+});
+
+alert("Food Added");
+}
+
+
+/* DELETE FOOD */
+function deleteFood(index){
+
+foods.splice(index,1);
+
+localStorage.setItem("foods",JSON.stringify(foods));
+
+showFoods();
+
+}
+
+
+/* DEADLINE */
+function setDeadline(){
+
+let time=document.getElementById("deadline").value;
+
+localStorage.setItem("deadline",time);
+
+document.getElementById("showDeadline").innerText =
+"Lunch Order Deadline: " + time;
+
+}
+
+let savedDeadline=localStorage.getItem("deadline");
+
+if(savedDeadline)
+{
+document.getElementById("showDeadline").innerText =
+"Lunch Order Deadline: " + savedDeadline;
+}
+
+
+/* SHOW ORDERS */
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let orderContainer=document.getElementById("ordersList");
+
+function showOrders(){
+
+orderContainer.innerHTML="";
+
+orders.forEach(function(order,index){
+
+let div=document.createElement("div");
+
+div.className="cart-card";
+
+let items="";
+
+order.items.forEach(function(item){
+
+items += item.name + " x " + item.qty + "<br>";
+
+});
+
+div.innerHTML = `
+<b>Order ${index+1}</b><br>
+${items}
+Time: ${order.time}
+`;
+
+orderContainer.appendChild(div);
+
+});
+
+document.getElementById("totalOrders").innerText =
+"Total Orders Received: " + orders.length;
+
+}
+function logoutAdmin(){
+
+localStorage.removeItem("admin");
+
+window.location="index.html";
+
+}
+showFoods();
+showOrders();
+
+</script>
+
+</body>
+</html>

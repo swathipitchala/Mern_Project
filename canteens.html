@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Canteens</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>Quick Byte</header>
+
+<h2 style="text-align:center;">Choose Your Canteen</h2>
+
+<div style="text-align:center;">
+
+<div class="food">
+<h3>Pencil Canteen</h3>
+<button onclick="showMenu('pencil')">View Menu</button>
+</div>
+
+<div class="food">
+<h3>Aparna Canteen</h3>
+<button onclick="showMenu('aparna')">View Menu</button>
+</div>
+
+<div class="food">
+<h3>Ball Canteen</h3>
+<button onclick="showMenu('ball')">View Menu</button>
+</div>
+
+</div>
+
+<br><br>
+
+<!-- Menu will appear here -->
+<div id="menuArea" style="text-align:center;"></div>
+
+<script src="script.js"></script>
+
+<script>
+
+function showMenu(canteen){
+
+let menu=document.getElementById("menuArea");
+
+if(canteen=="pencil")
+{
+menu.innerHTML = `
+
+<h2>Pencil Canteen Menu</h2>
+
+<div class="menu-item">
+
+<img src="biryani.jpg">
+
+<div class="food-info">
+<h4>Biryani</h4>
+<p>₹120</p>
+<button onclick="addCart('Biryani',120)">Add</button>
+</div>
+
+</div>
+
+<div class="menu-item">
+
+<img src="friedrice.jpg">
+
+<div class="food-info">
+<h4>Fried Rice</h4>
+<p>₹90</p>
+<button onclick="addCart('Fried Rice',90)">Add</button>
+</div>
+
+</div>
+
+<a href="cart.html">
+<button>Go to Cart</button>
+</a>
+
+`;
+}
+
+if(canteen=="aparna")
+{
+menu.innerHTML = `
+
+<h2>Aparna Canteen Menu</h2>
+
+<div class="menu-item">
+
+<img src="noodles.jpg">
+
+<div class="food-info">
+<h4>Noodles</h4>
+<p>₹80</p>
+<button onclick="addCart('Noodles',80)">Add</button>
+</div>
+
+</div>
+
+<div class="menu-item">
+
+<img src="burger.jpg">
+
+<div class="food-info">
+<h4>Burger</h4>
+<p>₹70</p>
+<button onclick="addCart('Burger',70)">Add</button>
+</div>
+
+</div>
+
+<a href="cart.html">
+<button>Go to Cart</button>
+</a>
+
+`;
+}
+
+if(canteen=="ball")
+{
+menu.innerHTML = `
+
+<h2>Ball Canteen</h2>
+
+<div class="menu-item">
+<img src="burger.jpg">
+<div class="food-info">
+<h4>Burger</h4>
+<p>₹70</p>
+<button onclick="addCart('Burger',70)">Add</button>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="friedrice.jpg">
+<div class="food-info">
+<h4>Fried Rice</h4>
+<p>₹90</p>
+<button onclick="addCart('Fried Rice',90)">Add</button>
+</div>
+</div>
+
+<a href="cart.html">
+<button>Go to Cart</button>
+</a>
+
+`;
+}
+
+}
+
+</script>
+<script src="script.js"></script>
+
+
+
+<div class="bottom-nav">
+
+<a href="canteens.html">🏠 Home</a>
+
+<a href="cart.html">🛒 Cart</a>
+
+<a href="account.html">👤 Account</a>
+
+</div>
+
+
+
+
+
+</body>
+</html>

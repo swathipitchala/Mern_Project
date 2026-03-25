@@ -1,0 +1,267 @@
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background-color:white;
+}
+
+/* Full screen watermark */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url('watermark5.jpg') no-repeat center;
+background-size:cover;
+opacity:0.2;
+z-index:-1;
+}
+
+/* Header */
+header{
+background:#ff5e57;
+color:white;
+text-align:center;
+padding:15px;
+font-size:30px;
+font-weight:bold;
+}
+
+/* Login box */
+.login-box{
+width:320px;
+background:white;
+padding:30px;
+margin:120px auto;
+border-radius:10px;
+box-shadow:0 0 15px gray;
+text-align:center;
+}
+
+/* ONLY login inputs */
+.login-box input{
+width:90%;
+padding:10px;
+margin:10px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+/* Default Button */
+button{
+padding:6px 12px;
+background:#ff5e57;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+font-size:14px;
+}
+
+/* Food cards */
+.food{
+display:inline-block;
+width:160px;
+background:white;
+padding:8px;
+margin:10px;
+border-radius:10px;
+box-shadow:0 0 8px gray;
+text-align:center;
+font-size:14px;
+}
+
+.food img{
+width:100%;
+height:90px;
+border-radius:8px;
+}
+
+/* Cart items */
+#cartItems{
+width:60%;
+margin:auto;
+}
+
+.cart-card{
+background:white;
+margin:15px;
+padding:15px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+font-size:18px;
+border-left:6px solid #ff5e57;
+}
+
+#total{
+text-align:center;
+color:#e74c3c;
+font-size:24px;
+}
+
+/* Menu list layout */
+.menu-item{
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:white;
+margin:10px auto;
+padding:10px;
+border-radius:10px;
+box-shadow:0 0 8px gray;
+width:60%;
+}
+
+.menu-item img{
+width:50px;
+height:50px;
+border-radius:6px;
+margin-right:10px;
+}
+
+.food-info{
+flex:1;
+margin-left:15px;
+}
+
+.food-info h4{
+margin:0;
+font-size:14px;
+}
+
+.food-info p{
+margin:5px 0;
+color:green;
+font-weight:bold;
+}
+
+/* Select place box */
+.big-box{
+width:300px;
+height:45px;
+font-size:16px;
+border-radius:8px;
+padding:5px;
+margin-bottom:10px;
+}
+
+/* Buttons */
+.order-btn{
+margin-top:15px;
+padding:10px 25px;
+background:#ff5a5a;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+.cod-btn{
+background:#ff9800;
+color:white;
+padding:10px 18px;
+margin:8px;
+}
+
+.upi-btn{
+background:#673ab7;
+color:white;
+padding:10px 18px;
+margin:8px;
+}
+
+.phonepe-btn,
+.gpay-btn,
+.paytm-btn{
+background:#673ab7;
+color:white;
+padding:8px 15px;
+margin:6px;
+}
+
+.place-btn{
+background:#2ecc71;
+color:white;
+padding:10px 22px;
+font-size:16px;
+margin-top:15px;
+}
+
+/* Bottom nav */
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:12px 0;
+box-shadow:0 -2px 10px gray;
+}
+
+.bottom-nav a{
+text-decoration:none;
+color:#ff5e57;
+font-size:16px;
+font-weight:bold;
+}
+
+/* Password eye */
+.password-container {
+position: relative;
+width: 100%;
+}
+
+.password-container input {
+width: 100%;
+height: 45px;
+padding: 10px;
+padding-right: 45px;
+border-radius: 8px;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+#eyeIcon {
+position: absolute;
+right: 15px;
+top: 50%;
+transform: translateY(-50%);
+cursor: pointer;
+color: gray;
+}
+
+/* Admin food inputs ONLY */
+.food-inputs{
+display:flex;
+justify-content:center;
+gap:10px;
+align-items:center;
+margin-top:10px;
+}
+
+.food-inputs input{
+width:200px;
+height:40px;
+padding:8px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+.food-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}

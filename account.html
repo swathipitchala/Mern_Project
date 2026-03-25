@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Account</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>My Account</header>
+
+<div style="text-align:center;margin-top:50px;">
+
+<h3>Email</h3>
+<input type="text" id="email">
+
+<h3>Password</h3>
+<input type="text" id="pass">
+
+<br><br>
+
+<button onclick="saveProfile()">Edit Profile</button>
+
+</div>
+
+<div class="bottom-nav">
+<a href="canteens.html">🏠 Home</a>
+<a href="cart.html">🛒 Cart</a>
+<a href="account.html">👤 Account</a>
+</div>
+
+<script>
+
+document.getElementById("email").value = localStorage.getItem("email");
+document.getElementById("pass").value = localStorage.getItem("pass");
+
+function saveProfile(){
+
+let email=document.getElementById("email").value;
+let pass=document.getElementById("pass").value;
+
+localStorage.setItem("email",email);
+localStorage.setItem("pass",pass);
+
+alert("Profile Updated");
+
+}
+
+</script>
+
+</body>
+</html>
